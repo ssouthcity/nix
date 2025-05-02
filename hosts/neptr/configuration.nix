@@ -1,10 +1,26 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 {
   imports = [
     ../common
   ];
 
   config = {
+    # nixpkgs
+    nixpkgs.overlays = [
+      (final: prev: {
+        unfree = import inputs.nixpkgs {
+          inherit prev;
+          system = prev.system;
+          config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "nvidia-x11" "nvidia-settings"];
+        };
+      })
+    ];
+
     # Bootloader
     boot.loader = {
       timeout = null; # wait indefinitely
@@ -78,6 +94,17 @@
       wireless.enable = true;
       wireless.enableGraphical = true;
     };
+
+    # Enable nvidia GPU drivers
+    hardware.graphics = {
+      enable = true;
+      extraPackages = [ pkgs.nvidia-vaapi-driver ];
+    };
+
+    services.xserver.videoDrivers = [ "nvidia" ];
+
+    hardware.nvidia.open = true;
+    hardware.nvidia.package = pkgs.unfree.linuxPackages.nvidia_x11;
 
     # Some programs need SUID wrappers, can be configured further or are
     # started in user sessions.
