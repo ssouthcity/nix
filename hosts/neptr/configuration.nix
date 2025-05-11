@@ -16,7 +16,12 @@
         unfree = import inputs.nixpkgs {
           inherit prev;
           system = prev.system;
-          config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "nvidia-x11" "nvidia-settings"];
+          config.allowUnfreePredicate =
+            pkg:
+            builtins.elem (lib.getName pkg) [
+              "nvidia-x11"
+              "nvidia-settings"
+            ];
         };
       })
     ];

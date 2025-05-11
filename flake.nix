@@ -41,6 +41,7 @@
       {
         formatter.${system} = treefmt-nix.lib.mkWrapper pkgs {
           projectRootFile = "flake.nix";
+          programs.actionlint.enable = true;
           programs.nixfmt.enable = true;
         };
 
