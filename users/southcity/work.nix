@@ -50,6 +50,8 @@ in
     home.packages = [
       pkgs.azure-cli
       pkgs.terraform
+
+      inputs.terraform-tools.packages.${pkgs.system}.default
     ];
   };
 }

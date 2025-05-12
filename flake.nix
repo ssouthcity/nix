@@ -21,6 +21,10 @@
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    terraform-tools.url = "github:ssouthcity/terraform-tools";
+    terraform-tools.inputs.nixpkgs.follows = "nixpkgs";
+    terraform-tools.inputs.flake-utils.follows = "flake-utils";
   };
 
   outputs =
