@@ -4,7 +4,7 @@
   nix.gc = {
     automatic = true;
     dates = "daily";
-    options = "--delete-older-than 30d";
+    options = "--delete-older-than 7d";
     persistent = true;
     randomizedDelaySec = "1h";
   };
