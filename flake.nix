@@ -39,26 +39,18 @@
         "x86_64-darwin"
         "aarch64-darwin"
       ];
-      forEachSupportedSystem =
-        f:
-        nixpkgs.lib.genAttrs supportedSystems (
-          system:
-          f {
-            pkgs = import nixpkgs { inherit system; };
-          }
-        );
 
-      treefmt = forEachSupportedSystem ({ pkgs, ... }: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
+      forEachSupportedSystem =
+        f: nixpkgs.lib.genAttrs supportedSystems (system: f nixpkgs.legacyPackages.${system});
+
+      treefmt = forEachSupportedSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
     in
     {
-      formatter = forEachSupportedSystem ({ pkgs, ... }: treefmt.${pkgs.system}.config.build.wrapper);
+      formatter = forEachSupportedSystem (pkgs: treefmt.${pkgs.system}.config.build.wrapper);
 
-      checks = forEachSupportedSystem (
-        { pkgs }:
-        {
-          formatting = treefmt.${pkgs.system}.config.build.check self;
-        }
-      );
+      checks = forEachSupportedSystem (pkgs: {
+        formatting = treefmt.${pkgs.system}.config.build.check self;
+      });
 
       nixosConfigurations.neptr = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -73,13 +65,13 @@
       };
 
       homeConfigurations."southcity@neptr" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs { system = "x86_64-linux"; };
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = { inherit inputs; };
         modules = [ ./users/southcity/personal.nix ];
       };
 
       homeConfigurations."southcity@nb-wsl" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs { system = "x86_64-linux"; };
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = { inherit inputs; };
         modules = [ ./users/southcity/work.nix ];
       };
