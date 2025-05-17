@@ -17,14 +17,11 @@
     nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
-    flake-utils.url = "github:numtide/flake-utils";
-
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     terraform-tools.url = "github:ssouthcity/terraform-tools";
     terraform-tools.inputs.nixpkgs.follows = "nixpkgs";
-    terraform-tools.inputs.flake-utils.follows = "flake-utils";
   };
 
   outputs =
@@ -33,45 +30,58 @@
       nixpkgs,
       home-manager,
       treefmt-nix,
-      flake-utils,
       ...
     }@inputs:
-    flake-utils.lib.eachDefaultSystemPassThrough (
-      system:
-      let
-        pkgs = nixpkgs.legacyPackages.${system};
-        outputs = self.outputs;
-      in
-      {
-        formatter.${system} = treefmt-nix.lib.mkWrapper pkgs {
-          projectRootFile = "flake.nix";
-          programs.actionlint.enable = true;
-          programs.nixfmt.enable = true;
-        };
+    let
+      supportedSystems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
+      forEachSupportedSystem =
+        f:
+        nixpkgs.lib.genAttrs supportedSystems (
+          system:
+          f {
+            pkgs = import nixpkgs { inherit system; };
+          }
+        );
 
-        nixosConfigurations.neptr = nixpkgs.lib.nixosSystem {
-          inherit system pkgs;
-          specialArgs = { inherit inputs outputs; };
-          modules = [ ./hosts/neptr ];
-        };
+      treefmt = forEachSupportedSystem ({ pkgs, ... }: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
+    in
+    {
+      formatter = forEachSupportedSystem ({ pkgs, ... }: treefmt.${pkgs.system}.config.build.wrapper);
 
-        nixosConfigurations.nb-wsl = nixpkgs.lib.nixosSystem {
-          inherit system pkgs;
-          specialArgs = { inherit inputs outputs; };
-          modules = [ ./hosts/nb-wsl ];
-        };
+      checks = forEachSupportedSystem (
+        { pkgs }:
+        {
+          formatting = treefmt.${pkgs.system}.config.build.check self;
+        }
+      );
 
-        homeConfigurations."southcity@neptr" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          extraSpecialArgs = { inherit inputs outputs; };
-          modules = [ ./users/southcity/personal.nix ];
-        };
+      nixosConfigurations.neptr = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [ ./hosts/neptr ];
+      };
 
-        homeConfigurations."southcity@nb-wsl" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          extraSpecialArgs = { inherit inputs outputs; };
-          modules = [ ./users/southcity/work.nix ];
-        };
-      }
-    );
+      nixosConfigurations.nb-wsl = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [ ./hosts/nb-wsl ];
+      };
+
+      homeConfigurations."southcity@neptr" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs { system = "x86_64-linux"; };
+        extraSpecialArgs = { inherit inputs; };
+        modules = [ ./users/southcity/personal.nix ];
+      };
+
+      homeConfigurations."southcity@nb-wsl" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs { system = "x86_64-linux"; };
+        extraSpecialArgs = { inherit inputs; };
+        modules = [ ./users/southcity/work.nix ];
+      };
+    };
 }

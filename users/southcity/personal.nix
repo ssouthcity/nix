@@ -7,7 +7,7 @@
 {
   imports = [
     inputs.nixvim.homeManagerModules.default
-    inputs.stylix.homeManagerModules.stylix
+    inputs.stylix.homeModules.stylix
 
     ./features/appearance
     ./features/apps
