@@ -19,9 +19,6 @@
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
-
-    terraform-tools.url = "github:ssouthcity/terraform-tools";
-    terraform-tools.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -50,6 +47,10 @@
 
       checks = forEachSupportedSystem (pkgs: {
         formatting = treefmt.${pkgs.system}.config.build.check self;
+      });
+
+      packages = forEachSupportedSystem (pkgs: {
+        terraform-refplace = pkgs.callPackage ./pkgs/terraform-refplace.nix { };
       });
 
       nixosConfigurations.neptr = nixpkgs.lib.nixosSystem {

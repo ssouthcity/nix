@@ -12,7 +12,7 @@
   config = {
     # nixpkgs
     nixpkgs.overlays = [
-      (final: prev: {
+      (_final: prev: {
         unfree = import inputs.nixpkgs {
           inherit prev;
           system = prev.system;

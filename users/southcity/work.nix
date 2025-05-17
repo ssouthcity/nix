@@ -5,7 +5,7 @@
   ...
 }:
 let
-  pinnedPackageVersionsOverlay = final: prev: {
+  pinnedPackageVersionsOverlay = _final: _prev: {
     terraform = pkgs.mkTerraform {
       version = "1.11.0";
       hash = "sha256-CPt1SxZZEvK2MXk45vvtKb2/NR/4yNWXBEUm6dvBXkU=";
@@ -51,7 +51,7 @@ in
       pkgs.azure-cli
       pkgs.terraform
 
-      inputs.terraform-tools.packages.${pkgs.system}.default
+      inputs.self.packages.${pkgs.system}.terraform-refplace
     ];
   };
 }
