@@ -12,6 +12,7 @@
     ./features/appearance
     ./features/apps
     ./features/cli
+    ./features/hyprland
   ];
 
   config = {
