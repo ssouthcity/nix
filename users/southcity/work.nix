@@ -7,9 +7,9 @@
 let
   pinnedPackageVersionsOverlay = _final: _prev: {
     terraform = pkgs.mkTerraform {
-      version = "1.11.0";
-      hash = "sha256-CPt1SxZZEvK2MXk45vvtKb2/NR/4yNWXBEUm6dvBXkU=";
-      vendorHash = "sha256-xF9m67GE3MgeKqy7DGAf8RO1/MCZ5Uis1XNrajogQcI=";
+      version = "1.12.0";
+      hash = "sha256-+EjsKl13kx3uJ50TrZIJLrvf4RBWDJsp1PD1dwtP6XA=";
+      vendorHash = "sha256-zWNLIurNP5e/AWr84kQCb2+gZIn6EAsuvr0ZnfSq7Zw=";
     };
   };
 in
