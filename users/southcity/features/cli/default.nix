@@ -2,6 +2,7 @@
 {
   imports = [
     ./bash.nix
+    ./devenv.nix
     ./direnv.nix
     ./eza.nix
     ./fzf.nix
