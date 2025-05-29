@@ -35,7 +35,7 @@ in
       modules-right = [
         "pulseaudio"
         "group/hardware"
-        "group/power"
+        "custom/power"
       ];
 
       "custom/nixos" = {
@@ -46,19 +46,7 @@ in
 
       "custom/power" = {
         format = "󰐥";
-        on-click = "shutdown now";
-        tooltip = false;
-      };
-
-      "custom/reboot" = {
-        format = "󰑓";
-        on-click = "reboot";
-        tooltip = false;
-      };
-
-      "custom/lock" = {
-        format = "󰍁";
-        on-click = "hyprlock";
+        on-click = "wofi-power-menu";
         tooltip = false;
       };
 
@@ -69,18 +57,6 @@ in
           click-to-reveal = true;
         };
         modules = [ "cpu" "memory" "temperature" ];
-      };
-
-      "group/power" = {
-        orientation = "inherit";
-        drawer = {
-          transition-left-to-right = false;
-        };
-        modules = [
-          "custom/power"
-          "custom/reboot"
-          "custom/lock"
-        ];
       };
 
       "hyprland/workspaces" = {

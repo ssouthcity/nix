@@ -14,6 +14,13 @@
     package = pkgs.capitaine-cursors-themed;
   };
 
+  stylix.iconTheme = {
+    enable = true;
+    dark = "Gruvbox-Plus-Dark";
+    light = "Gruvbox-Plus-Light";
+    package = pkgs.gruvbox-plus-icons;
+  };
+
   stylix.fonts = {
     serif = {
       name = "Noto Serif";
