@@ -84,6 +84,9 @@
 
         # fix for dragging issues with xwayland
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
+
+        # bevy windows
+        "float,class:daedalus"
       ];
       general = {
         gaps_in = 5;
