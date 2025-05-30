@@ -28,6 +28,8 @@
         "$mod, V, togglefloating"
         "$mod, P, pseudo"
         "$mod, M, exit"
+        "$mod, F, fullscreen, 1"
+        "$mod SHIFT, F, fullscreen, 0"
 
         # application shortcuts
         "$mod, Q, exec, $terminal"
