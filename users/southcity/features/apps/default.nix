@@ -4,5 +4,6 @@
     ./firefox.nix
     ./kitty.nix
     ./spotify.nix
+    ./xdg.nix
   ];
 }

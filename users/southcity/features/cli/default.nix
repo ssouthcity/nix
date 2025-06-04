@@ -8,6 +8,7 @@
     ./fzf.nix
     ./git.nix
     ./jq.nix
+    ./news.nix
     ./nixvim
     ./starship.nix
     ./tmux.nix
