@@ -5,6 +5,6 @@
   ];
 
   xdg.autostart.entries = [
-    pkgs.discord
+    "${pkgs.discord}/share/applications/discord.desktop"
   ];
 }

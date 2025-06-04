@@ -5,6 +5,6 @@
   ];
 
   xdg.autostart.entries = [
-    pkgs.spotify
+    "${pkgs.spotify}/share/applications/spotify.desktop"
   ];
 }
