@@ -28,6 +28,7 @@ in
       modules-left = [
         "custom/nixos"
         "hyprland/workspaces"
+        "tray"
       ];
       modules-center = [
         "clock"

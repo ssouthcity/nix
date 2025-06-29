@@ -13,9 +13,10 @@
 
       monitor = [
         # rotate vertical monitor
-        "DP-1, prefered, auto, 1, transform, 3"
+        "DP-1, preferred, auto, 1, transform, 3"
+        "DP-2, highrr, auto, 1"
         # default option as fallback
-        ", prefered, auto, 1"
+        ", preferred, auto, 1"
       ];
       env = [
         # nvidia
@@ -28,7 +29,6 @@
         "$mod, C, killactive"
         "$mod, V, togglefloating"
         "$mod, P, pseudo"
-        "$mod, M, exit"
         "$mod, F, fullscreen, 1"
         "$mod SHIFT, F, fullscreen, 0"
 

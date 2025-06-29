@@ -1,6 +1,5 @@
 {
   inputs,
-  pkgs,
   lib,
   ...
 }:
@@ -12,6 +11,7 @@
     ./features/appearance
     ./features/apps
     ./features/cli
+    ./features/games
     ./features/hyprland
   ];
 
