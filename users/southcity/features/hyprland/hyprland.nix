@@ -10,6 +10,7 @@
       "$fileManager" = "nautilus";
       "$browser" = "firefox";
       "$menu" = "wofi --show drun";
+      "$screenshot" = "hyprshot -m region";
 
       monitor = [
         # rotate vertical monitor
@@ -37,6 +38,9 @@
         "$mod, R, exec, $menu"
         "$mod, B, exec, $browser"
         "$mod, E, exec, $fileManager"
+
+        # screenshow
+        "$mod, X, exec, $screenshot"
 
         # shift focus
         "$mod, H, movefocus, l"
