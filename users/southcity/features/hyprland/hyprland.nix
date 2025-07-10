@@ -92,6 +92,9 @@
         # fix for dragging issues with xwayland
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
 
+        # lock discord to specific workspace
+        "workspace 4, class:^(discord)$"
+
         # aseprite
         "tile,class:Aseprite"
 
