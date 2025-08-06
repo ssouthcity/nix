@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ pkgs, inputs, ... }:
 {
   imports = [
     inputs.nixos-wsl.nixosModules.default
@@ -11,6 +11,10 @@
     wsl.defaultUser = "southcity";
 
     networking.hostName = "nb-wsl";
+
+    environment.systemPackages = [
+      pkgs.home-manager
+    ];
 
     system.stateVersion = "23.11";
   };

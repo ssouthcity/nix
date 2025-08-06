@@ -48,9 +48,6 @@ in
     };
 
     home.packages = [
-      pkgs.azure-cli
-      pkgs.terraform
-
       inputs.self.packages.${pkgs.system}.terraform-refplace
     ];
   };
