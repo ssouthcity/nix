@@ -15,8 +15,8 @@ let
 in
 {
   imports = [
-    inputs.nixvim.homeManagerModules.default
-    inputs.stylix.homeManagerModules.stylix
+    inputs.nixvim.homeModules.default
+    inputs.stylix.homeModules.stylix
 
     ./features/appearance
     ./features/cli
