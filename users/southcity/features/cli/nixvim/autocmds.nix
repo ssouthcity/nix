@@ -25,5 +25,15 @@
         '';
       };
     }
+    {
+      event = "CursorHold";
+      callback = {
+        __raw = ''
+          function()
+            vim.diagnostic.open_float()
+          end
+        '';
+      };
+    }
   ];
 }
