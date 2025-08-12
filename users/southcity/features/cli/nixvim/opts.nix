@@ -29,5 +29,8 @@
 
     # sign column always present
     signcolumn = "yes";
+
+    # milliseconds to hold before CursorHold event is triggered
+    updatetime = 750;
   };
 }
