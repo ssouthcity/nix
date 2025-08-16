@@ -32,5 +32,8 @@
 
     # milliseconds to hold before CursorHold event is triggered
     updatetime = 750;
+
+    # use system clipboard
+    clipboard = [ "unnamedplus" ];
   };
 }
