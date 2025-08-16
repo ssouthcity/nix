@@ -134,6 +134,10 @@
       ecosystem = {
         no_update_news = true;
       };
+      input = {
+        kb_layout = "us";
+        kb_variant = "intl";
+      };
     };
   };
 }
