@@ -23,7 +23,7 @@ jobs:
       id: update
 
     - name: Merge PR
-      run: gh pr merge --auto "${{ steps.update.outputs.pull-request-number }}" --rebase
+      run: gh pr merge --auto "${{ steps.update.outputs.pull-request-number }}" --rebase --delete-branch
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       if: ${{ steps.update.outputs.pull-request-number != '' }}
