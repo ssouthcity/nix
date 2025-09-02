@@ -21,6 +21,8 @@ in
 {
   stylix.targets.tmux.enable = false;
 
+  home.packages = [ pkgs.tmux-sessionizer ];
+
   programs.tmux = {
     enable = true;
     shortcut = "a";
@@ -56,6 +58,9 @@ in
       # Navigation
       bind -n M-H previous-window
       bind -n M-L next-window
+
+      # tmux-sessionizer
+      bind C-j display-popup -E "tms"
     '';
 
     plugins = with pkgs; [
