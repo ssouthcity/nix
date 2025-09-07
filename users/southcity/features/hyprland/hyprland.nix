@@ -135,8 +135,9 @@
         no_update_news = true;
       };
       input = {
-        kb_layout = "us";
-        kb_variant = "altgr-intl";
+        kb_layout = "us,no";
+        kb_variant = "altgr-intl,nodeadkeys";
+        kb_options = "grp:caps_toggle,grp_led:scroll";
       };
     };
   };

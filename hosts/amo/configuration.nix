@@ -48,8 +48,9 @@
 
     # Configure keymap in X11
     services.xserver.xkb = {
-      layout = "us";
-      variant = "altgr-intl";
+      layout = "us,no";
+      variant = "altgr-intl,nodeadkeys";
+      options = "grp:caps_toggle,grp_led:scroll"; 
     };
 
     # Configure console keymap
