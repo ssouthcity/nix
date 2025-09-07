@@ -60,6 +60,12 @@
         modules = [ ./hosts/neptr ];
       };
 
+      nixosConfigurations.amo = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [ ./hosts/amo ];
+      };
+
       nixosConfigurations.nb-wsl = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
@@ -67,6 +73,12 @@
       };
 
       homeConfigurations."southcity@neptr" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = { inherit inputs; };
+        modules = [ ./users/southcity/personal.nix ];
+      };
+
+      homeConfigurations."southcity@amo" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = { inherit inputs; };
         modules = [ ./users/southcity/personal.nix ];
