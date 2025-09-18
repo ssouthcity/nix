@@ -138,6 +138,9 @@
         kb_layout = "us,no";
         kb_variant = "altgr-intl,nodeadkeys";
         kb_options = "grp:caps_toggle,grp_led:scroll";
+
+        sensitivity = 0;
+        accel_profile = "flat";
       };
     };
   };
