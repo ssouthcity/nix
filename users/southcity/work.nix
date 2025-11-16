@@ -38,10 +38,10 @@ in
       pinnedPackageVersionsOverlay
     ];
 
-    programs.git = {
-      userName = lib.mkForce "Stian Sørby";
-      userEmail = lib.mkForce "stian.sorby@norges-bank.no";
-      extraConfig.credential = {
+    programs.git.settings = {
+      user.name = lib.mkForce "Stian Sørby";
+      user.email = lib.mkForce "stian.sorby@norges-bank.no";
+      credential = {
         helper = "/mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe";
         useHttpPath = true;
       };
