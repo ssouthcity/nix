@@ -44,10 +44,10 @@
       treefmt = forEachSupportedSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
     in
     {
-      formatter = forEachSupportedSystem (pkgs: treefmt.${pkgs.system}.config.build.wrapper);
+      formatter = forEachSupportedSystem (pkgs: treefmt.${pkgs.stdenv.hostPlatform.system}.config.build.wrapper);
 
       checks = forEachSupportedSystem (pkgs: {
-        formatting = treefmt.${pkgs.system}.config.build.check self;
+        formatting = treefmt.${pkgs.stdenv.hostPlatform.system}.config.build.check self;
       });
 
       packages = forEachSupportedSystem (pkgs: {

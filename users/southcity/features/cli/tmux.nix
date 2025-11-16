@@ -63,9 +63,9 @@ in
       bind C-j display-popup -E "tms"
     '';
 
-    plugins = with pkgs; [
+    plugins = [
       {
-        plugin = tmuxPlugins.continuum;
+        plugin = pkgs.tmuxPlugins.continuum;
         extraConfig = ''
           set -g @continuum-restore 'on'
           set -g @continuum-boot 'on'
@@ -73,15 +73,15 @@ in
         '';
       }
       {
-        plugin = tmuxPlugins.resurrect;
+        plugin = pkgs.tmuxPlugins.resurrect;
         extraConfig = ''
           set -g @resurrect-strategy-vim 'session'
           set -g @resurrect-strategy-nvim 'session'
           set -g @resurrect-capture-pane-contents 'on'
         '';
       }
-      tmuxPlugins.vim-tmux-navigator
-      tmuxPlugins.yank
+      pkgs.tmuxPlugins.vim-tmux-navigator
+      pkgs.tmuxPlugins.yank
     ];
   };
 }

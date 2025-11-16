@@ -48,7 +48,7 @@ in
     };
 
     home.packages = [
-      inputs.self.packages.${pkgs.system}.terraform-refplace
+      inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.terraform-refplace
     ];
   };
 }
