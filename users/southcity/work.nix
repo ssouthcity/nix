@@ -32,6 +32,7 @@ in
       pkg:
       builtins.elem (lib.getName pkg) [
         "terraform"
+        "databricks-cli"
       ];
 
     nixpkgs.overlays = [
@@ -49,6 +50,15 @@ in
 
     home.packages = [
       inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.terraform-refplace
+
+      # data-dbw
+      pkgs.uv
+      pkgs.cargo
+      pkgs.rustc
+      pkgs.gcc
+      pkgs.git-cliff
+      pkgs.lychee
+      pkgs.databricks-cli
     ];
   };
 }
