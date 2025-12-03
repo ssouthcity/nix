@@ -14,6 +14,7 @@
 
     environment.systemPackages = [
       pkgs.home-manager
+      pkgs.wslu
     ];
 
     programs.nix-ld.enable = true;
