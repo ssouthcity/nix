@@ -48,8 +48,14 @@ in
       };
     };
 
+    home.sessionVariables = {
+      EDITOR = "nvim";
+      BROWSER = "wslview";
+    };
+
     home.packages = [
       inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.terraform-refplace
+      pkgs.terraform
 
       # data-dbw
       pkgs.uv

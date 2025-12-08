@@ -3,6 +3,7 @@
     ./cmp.nix
     ./commentary.nix
     ./gitsigns.nix
+    ./jupytext.nix
     ./lsp.nix
     ./lualine.nix
     ./markdown-preview.nix
