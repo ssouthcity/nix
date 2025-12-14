@@ -29,5 +29,11 @@
         "discord"
         "spotify"
       ];
+
+    home.sessionVariables = {
+      BROWSER = "firefox";
+      EDITOR = "nvim";
+      TERM = "kitty";
+    };
   };
 }

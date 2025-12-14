@@ -66,7 +66,8 @@
     binds {
         Mod+Shift+Slash { show-hotkey-overlay; }
 
-        Mod+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
+        Mod+T hotkey-overlay-title="Open a Terminal" { spawn "sh" "-c" "$TERM"; }
+        Mod+B hotkey-overlay-title="Open a Browser" { spawn "sh" "-c" "$BROWSER"; }
         Mod+D hotkey-overlay-title="Run an Application: wofi" { spawn "wofi" "--show" "drun"; }
         Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
