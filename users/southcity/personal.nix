@@ -13,6 +13,7 @@
     ./features/cli
     ./features/games
     ./features/hyprland
+    ./features/niri
   ];
 
   config = {

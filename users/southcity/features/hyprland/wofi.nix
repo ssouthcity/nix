@@ -10,6 +10,9 @@
       allow_markup = true;
 
       dmenu-parse_action = true;
+
+      width = 640;
+      height = 480;
     };
   };
 

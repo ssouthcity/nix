@@ -92,6 +92,7 @@
     environment.systemPackages = [
       pkgs.vim
       pkgs.home-manager
+      pkgs.xwayland-satellite
     ];
 
     # Enable support for Logitech peripherals
@@ -119,6 +120,11 @@
       enable = true;
       withUWSM = true;
       xwayland.enable = true;
+    };
+
+    # Niri
+    programs.niri = {
+      enable = true;
     };
 
     # Steam
