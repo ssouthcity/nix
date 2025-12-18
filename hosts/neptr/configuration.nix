@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  inputs,
   ...
 }:
 {
@@ -11,20 +10,19 @@
 
   config = {
     # nixpkgs
-    nixpkgs.overlays = [
-      (_final: prev: {
-        unfree = import inputs.nixpkgs {
-          inherit prev;
-          system = prev.system;
-          config.allowUnfreePredicate =
-            pkg:
-            builtins.elem (lib.getName pkg) [
-              "nvidia-x11"
-              "nvidia-settings"
-            ];
-        };
-      })
-    ];
+    nixpkgs.config.allowUnfreePredicate =
+      pkg: builtins.elem (lib.getName pkg) [
+        # nvidia
+        "nvidia-x11"
+        "nvidia-settings"
+        "nvidia-persistenced"
+
+        # steam
+        "steam"
+        "steam-original"
+        "steam-unwrapped"
+        "steam-run"
+      ];
 
     # Bootloader
     boot.loader = {
@@ -111,8 +109,7 @@
 
     hardware.nvidia = {
       open = true;
-      powerManagement.enable = true;
-      package = pkgs.unfree.linuxPackages.nvidia_x11;
+      nvidiaSettings = true;
     };
 
     # Hyprland
@@ -128,13 +125,6 @@
     };
 
     # Steam
-    nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-      "steam"
-      "steam-original"
-      "steam-unwrapped"
-      "steam-run"
-    ];
-
     programs.steam = {
       enable = true;
       remotePlay.openFirewall = true;

@@ -2,14 +2,12 @@
 {
   xdg.configFile."niri/config.kdl".text = ''
     output "DP-1" {
-        mode "1920x1080@164.917"
+        mode "1920x1080"
         transform "270"
-        position x=0 y=0
     }
 
     output "DP-2" {
-        mode "1920x1080@143.855"
-        position x=1080 y=0
+        mode "1920x1080"
     }
 
     cursor {
@@ -54,13 +52,21 @@
     }
 
     window-rule {
-      match app-id="discord"
-      open-maximized true
+        match app-id="discord"
+        open-maximized true
     }
 
     window-rule {
         geometry-corner-radius 12
         clip-to-geometry true
+    }
+
+    environment {
+        LIBVA_DRIVER_NAME "nvidia"
+        GBM_BACKEND "nvidia-drm"
+        __GLX_VENDOR_LIBRARY_NAME "nvidia"
+        __GL_DXVK_USE_LAST_PIPELINE_CACHE "1"
+        NIXOS_OZONE_WL "1"
     }
 
     binds {
