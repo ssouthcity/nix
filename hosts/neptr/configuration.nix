@@ -72,6 +72,14 @@
       #media-session.enable = true;
     };
 
+    xdg.portal = {
+      enable = true;
+      wlr.enable = true;
+      extraPortals = [];
+    };
+
+    security.polkit.enable = true;
+
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users.users.southcity = {
       isNormalUser = true;
@@ -110,13 +118,6 @@
     hardware.nvidia = {
       open = true;
       nvidiaSettings = true;
-    };
-
-    # Hyprland
-    programs.hyprland = {
-      enable = true;
-      withUWSM = true;
-      xwayland.enable = true;
     };
 
     # Niri

@@ -1,5 +1,9 @@
 { config, ... }:
 {
+  imports = [
+    ./wpaperd.nix
+  ];
+
   xdg.configFile."niri/config.kdl".text = ''
     output "DP-1" {
         mode "1920x1080"
@@ -59,14 +63,6 @@
     window-rule {
         geometry-corner-radius 12
         clip-to-geometry true
-    }
-
-    environment {
-        LIBVA_DRIVER_NAME "nvidia"
-        GBM_BACKEND "nvidia-drm"
-        __GLX_VENDOR_LIBRARY_NAME "nvidia"
-        __GL_DXVK_USE_LAST_PIPELINE_CACHE "1"
-        NIXOS_OZONE_WL "1"
     }
 
     binds {
