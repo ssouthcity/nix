@@ -53,18 +53,24 @@ in
       BROWSER = "wslview";
     };
 
+    programs.uv.enable = true;
+
     home.packages = [
       inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.terraform-refplace
       pkgs.terraform
+      pkgs.azure-cli
 
       # data-dbw
-      pkgs.uv
       pkgs.cargo
       pkgs.rustc
       pkgs.gcc
       pkgs.git-cliff
       pkgs.lychee
       pkgs.databricks-cli
+    ];
+
+    home.sessionPath = [
+      "$HOME/.local/bin"
     ];
   };
 }

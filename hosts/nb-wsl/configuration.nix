@@ -17,7 +17,10 @@
       pkgs.wslu
     ];
 
-    programs.nix-ld.enable = true;
+    programs.nix-ld = {
+      enable = true;
+      libraries = [pkgs.icu];
+    };
 
     system.stateVersion = "23.11";
   };
