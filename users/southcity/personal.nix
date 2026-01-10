@@ -11,9 +11,8 @@
     ./features/appearance
     ./features/apps
     ./features/cli
+    ./features/desktop
     ./features/games
-    ./features/hyprland
-    ./features/niri
   ];
 
   config = {

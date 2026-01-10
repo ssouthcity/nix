@@ -1,9 +1,5 @@
 { config, ... }:
 {
-  imports = [
-    ./wpaperd.nix
-  ];
-
   xdg.configFile."niri/config.kdl".text = ''
     output "DP-1" {
         mode "1920x1080"
@@ -61,7 +57,7 @@
     }
 
     window-rule {
-        geometry-corner-radius 12
+        geometry-corner-radius 20
         clip-to-geometry true
     }
 
@@ -70,8 +66,8 @@
 
         Mod+T hotkey-overlay-title="Open a Terminal" { spawn "sh" "-c" "$TERM"; }
         Mod+B hotkey-overlay-title="Open a Browser" { spawn "sh" "-c" "$BROWSER"; }
-        Mod+D hotkey-overlay-title="Run an Application: wofi" { spawn "wofi" "--show" "drun"; }
-        Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+        Mod+D hotkey-overlay-title="Launch Application" { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+        Mod+P hotkey-overlay-title="View Sessions" { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
 
         Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
