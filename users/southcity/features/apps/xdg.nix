@@ -1,5 +1,0 @@
-{
-  xdg.autostart = {
-    enable = true;
-  };
-}
