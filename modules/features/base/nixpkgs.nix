@@ -1,3 +1,4 @@
+{ self, ... }:
 let
   genericModule =
     { lib, config, ... }:
@@ -9,7 +10,10 @@ let
       };
 
       config = {
-        nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) config.allowedUnfreePackages;
+        nixpkgs.config.allowUnfreePredicate =
+          pkg: builtins.elem (lib.getName pkg) config.allowedUnfreePackages;
+
+        nixpkgs.overlays = [ self.overlays.default ];
       };
     };
 in
