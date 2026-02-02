@@ -20,8 +20,6 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
-      # TODO: temp fix until this issue is resolved https://github.com/nix-community/stylix/issues/2163
-      inputs.gnome-shell.url = "github:GNOME/gnome-shell/ef02db02bf0ff342734d525b5767814770d85b49";
     };
 
     nixvim = {
