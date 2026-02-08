@@ -5,6 +5,7 @@
     modules = with self.homeModules; [
       personalConfiguration
 
+      ai
       base
       browser
       cli
