@@ -5,6 +5,7 @@
     modules = with self.nixosModules; [
       neptrConfiguration
       neptrHardware
+      neptrDisks 
 
       base
       browser
