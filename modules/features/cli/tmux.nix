@@ -23,8 +23,6 @@
     {
       stylix.targets.tmux.enable = false;
 
-      home.packages = [ pkgs.tmux-sessionizer ];
-
       programs.tmux = {
         enable = true;
         shortcut = "a";

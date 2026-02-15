@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   flake.nixosModules.neptrDisks = {
-    imports = [inputs.disko.nixosModules.disko];
+    imports = [ inputs.disko.nixosModules.disko ];
 
     disko.devices = {
       disk = {
