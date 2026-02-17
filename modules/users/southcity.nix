@@ -25,6 +25,7 @@
     modules = with self.homeModules; [
       workConfiguration
 
+      ai
       base
       cli
       nixvim
