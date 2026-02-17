@@ -32,6 +32,8 @@
         libraries = [ pkgs.icu ];
       };
 
+      programs.dconf.enable = true;
+
       system.stateVersion = "23.11";
     };
 }
