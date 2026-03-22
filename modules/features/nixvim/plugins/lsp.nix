@@ -25,17 +25,10 @@
           enable = true;
           installCargo = false;
           installRustc = false;
-          settings = {
-            # https://github.com/rust-lang/rust-analyzer/issues/19402
-            initialization_options = {
-              cachePriming = {
-                enable = false;
-              };
-            };
-          };
         };
         templ.enable = true;
         terraformls.enable = true;
+        yamlls.enable = true;
       };
     };
   };
