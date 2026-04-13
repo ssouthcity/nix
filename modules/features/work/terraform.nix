@@ -17,7 +17,10 @@
 
       home.packages = [
         pkgs.terraform
-        pkgs.azure-cli
+        (pkgs.azure-cli.withExtensions [
+          pkgs.azure-cli.extensions.amg
+          pkgs.azure-cli.extensions.monitor-control-service
+        ])
         pkgs.terraform-refplace
       ];
     };
