@@ -6,10 +6,13 @@
       servers = {
         gopls.enable = true;
         hls.enable = true;
+        jsonls.enable = true;
         nixd.enable = true;
+        ruff.enable = true;
         rust_analyzer.enable = true;
         templ.enable = true;
         terraformls.enable = true;
+        ty.enable = true;
         yamlls.enable = true;
       };
       keymaps = [
