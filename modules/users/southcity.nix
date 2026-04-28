@@ -3,6 +3,17 @@
   flake.homeConfigurations."southcity" = inputs.home-manager.lib.homeManagerConfiguration {
     pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
     modules = with self.homeModules; [
+      {
+        # temp fix for https://github.com/NixOS/nixpkgs/issues/514113
+        nixpkgs.overlays = [
+          (_final: prev: {
+            openldap = prev.openldap.overrideAttrs (_: {
+              doCheck = false;
+            });
+          })
+        ];
+      }
+
       personalConfiguration
 
       ai

@@ -10,7 +10,7 @@
       xdg.configFile."tms/config.toml".source = toml.generate "config.toml" {
         search_dirs = [
           {
-            path = "~/src";
+            path = "~/Projects";
             depth = 1;
           }
         ];
