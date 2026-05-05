@@ -15,6 +15,8 @@
     { config, ... }:
     {
       xdg.configFile."niri/config.kdl".text = ''
+        spawn-at-startup "noctalia-shell"
+
         output "DP-1" {
             mode "1920x1080"
             transform "270"
