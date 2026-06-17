@@ -23,6 +23,7 @@
       desktop
       gamedev
       gaming
+      homelab
       nixvim
       social
       streaming

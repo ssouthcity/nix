@@ -5,6 +5,7 @@
     programs.nixvim.lsp = {
       servers = {
         gopls.enable = true;
+        helm_ls.enable = true;
         hls.enable = true;
         jsonls.enable = true;
         nixd.enable = true;
