@@ -3,11 +3,14 @@
     programs.firefox.enable = true;
   };
 
-  flake.homeModules.browser = {
-    programs.firefox.enable = true;
+  flake.homeModules.browser = { config, ... }: {
+    programs.firefox = {
+      enable = true;
+      configPath = "${config.xdg.configHome}/mozilla/firefox";
 
-    # firefox is configured through Mozilla cloud
-    # to sync firefox across non-nix devices
-    stylix.targets.firefox.enable = false;
+      profiles.default = { };
+    };
+
+    stylix.targets.firefox.profileNames = [ "default" ];
   };
 }
