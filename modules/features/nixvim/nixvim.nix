@@ -18,6 +18,8 @@
       vimdiffAlias = true;
 
       defaultEditor = true;
+
+      nixpkgs.source = inputs.nixpkgs;
     };
   };
 }
