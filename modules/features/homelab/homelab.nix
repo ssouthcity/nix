@@ -18,14 +18,19 @@
 
         (pkgs.buildGoModule {
           pname = "topf";
-          version = "0.3.0";
+          version = "0.4.2";
           src = pkgs.fetchFromGitHub {
             owner = "postfinance";
             repo = "topf";
-            rev = "v0.3.0";
-            sha256 = "sha256-X9KWQaRbICr22wcxP0oaCqULNzhVnn840IHZdZ9v+XA=";
+            rev = "v0.4.2";
+            sha256 = "sha256-W1IES57n8NTcnt9D5iTkrAxnZf4oaz4vm6UBTM96nrc=";
           };
-          vendorHash = "sha256-UL/iVqVMN9JL85ylLFpEJ+yit60LAaghRCTNEx8q2MQ=";
+          vendorHash = "sha256-YGDMWx8jLwLcdjIIh82wL2k1yhWo1+GEW0aq47PZbDI=";
+          nativeCheckInputs = [
+            pkgs.age
+            pkgs.sops
+            pkgs.vals
+          ];
         })
       ];
     };

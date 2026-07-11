@@ -19,6 +19,9 @@
 
     programs.noctalia = {
       enable = true;
+      settings = {
+        shell.greeter_sync.auto_sync.enable = true;
+      };
     };
   };
 }
