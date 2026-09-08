@@ -2,7 +2,10 @@
   flake.homeModules.social =
     { pkgs, ... }:
     {
-      allowedUnfreePackages = [ "discord" ];
+      allowedUnfreePackages = [
+        "discord"
+        "discord-unwrapped"
+      ];
 
       home.packages = [
         pkgs.discord
