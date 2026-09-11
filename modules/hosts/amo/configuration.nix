@@ -5,6 +5,7 @@
     modules = with self.nixosModules; [
       amoConfiguration
       amoHardware
+      amoDisks
 
       base
       browser
