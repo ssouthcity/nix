@@ -20,10 +20,12 @@
         output "DP-1" {
             mode "1920x1080"
             transform "270"
+            position x=0 y=0
         }
 
         output "DP-2" {
             mode "1920x1080"
+            position x=1080 y=420
         }
 
         cursor {
