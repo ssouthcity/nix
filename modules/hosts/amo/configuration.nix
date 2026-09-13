@@ -3,13 +3,14 @@
   flake.nixosConfigurations.amo = inputs.nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
     modules = with self.nixosModules; [
+      inputs.nixos-hardware.nixosModules.lenovo-legion-15ach6h
+
       amoConfiguration
       amoHardware
       amoDisks
 
       base
       browser
-      containers
       desktop
       gaming
       nvidia
@@ -24,27 +25,6 @@
         timeout = 0;
         efi.canTouchEfiVariables = true;
         systemd-boot.enable = true;
-      };
-
-      # Boot animations
-      boot.plymouth = {
-        enable = true;
-        theme = "pixels";
-        themePackages = [
-          (pkgs.adi1090x-plymouth-themes.override {
-            selected_themes = [ "pixels" ];
-          })
-        ];
-      };
-
-      boot = {
-        consoleLogLevel = 3;
-        initrd.verbose = false;
-        kernelParams = [
-          "quiet"
-          "udev.log_level=3"
-          "systemd.show_status=auto"
-        ];
       };
 
       # Network
@@ -93,6 +73,7 @@
       users.users.southcity = {
         isNormalUser = true;
         description = "Stian Sørby";
+        initialPassword = "ChangeMe!";
         extraGroups = [
           "networkmanager"
           "wheel"
@@ -109,18 +90,12 @@
         pkgs.home-manager
       ];
 
-      # Enable support for Logitech peripherals
-      hardware.logitech = {
-        wireless.enable = true;
-        wireless.enableGraphical = true;
-      };
-
       # This value determines the NixOS release from which the default
       # settings for stateful data, like file locations and database versions
       # on your system were taken. It‘s perfectly fine and recommended to leave
       # this value at the release version of the first install of this system.
       # Before changing this value read the documentation for this option
       # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-      system.stateVersion = "24.11"; # Did you read the comment?
+      system.stateVersion = "26.05"; # Did you read the comment?
     };
 }
