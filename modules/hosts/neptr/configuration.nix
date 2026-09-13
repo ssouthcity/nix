@@ -13,6 +13,7 @@
       desktop
       gaming
       nvidia
+      stylix
     ];
   };
 
@@ -29,12 +30,6 @@
       # Boot animations
       boot.plymouth = {
         enable = true;
-        theme = "pixels";
-        themePackages = [
-          (pkgs.adi1090x-plymouth-themes.override {
-            selected_themes = [ "pixels" ];
-          })
-        ];
       };
 
       boot = {
@@ -123,6 +118,10 @@
       programs.nix-ld = {
         enable = true;
       };
+
+      services.gnome.gnome-keyring.enable = true;
+      security.pam.services.greetd.enableGnomeKeyring = true;
+      programs.seahorse.enable = true;
 
       # This value determines the NixOS release from which the default
       # settings for stateful data, like file locations and database versions
