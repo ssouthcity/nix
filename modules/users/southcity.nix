@@ -24,6 +24,7 @@
       gamedev
       gaming
       nixvim
+      office
       social
       streaming
       stylix
