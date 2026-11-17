@@ -34,7 +34,6 @@
 
       boot = {
         consoleLogLevel = 3;
-        initrd.verbose = false;
         kernelParams = [
           "quiet"
           "udev.log_level=3"
@@ -109,10 +108,8 @@
       ];
 
       # Enable support for Logitech peripherals
-      hardware.logitech = {
-        wireless.enable = true;
-        wireless.enableGraphical = true;
-      };
+      hardware.logitech.wireless.enable = true;
+      programs.solaar.enable = true;
 
       # Linked library support
       programs.nix-ld = {

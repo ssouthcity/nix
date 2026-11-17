@@ -28,7 +28,6 @@
         "nvidia_drm.fbdev=1"
       ];
 
-      boot.initrd.systemd.enable = true;
       boot.initrd.kernelModules = [ 
         "nvidia" 
         "nvidia_modeset" 

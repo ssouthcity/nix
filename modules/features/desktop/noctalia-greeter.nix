@@ -10,7 +10,7 @@
       inputs.noctalia-greeter.nixosModules.default
     ];
 
-    programs.noctalia-greeter = {
+    services.displayManager.noctalia-greeter = {
       enable = true;
     };
   };
