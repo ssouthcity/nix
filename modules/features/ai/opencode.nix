@@ -22,14 +22,11 @@
             npm = "@ai-sdk/openai-compatible";
             name = "Ollama (local)";
             options = {
-              baseURL = "https://ollama.southcity.dev/v1";
+              baseURL = "http://127.0.0.1:11434/v1";
             };
             models = {
-              "deepseek-r1" = {
-                name = "deepseek-r1";
-              };
-              "qwen3" = {
-                name = "qwen3";
+              "inkling-2-mini" = {
+                name = "inkling-2-mini";
               };
             };
           };

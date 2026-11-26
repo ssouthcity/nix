@@ -29,6 +29,10 @@
       "nix-command"
     ];
 
+    nix.settings.substituters = [
+      "https://cache.nixos-cuda.org"
+    ];
+
     # Trusted substituters
     nix.settings.trusted-substituters = [
       "https://devenv.cachix.org"
@@ -36,6 +40,7 @@
 
     nix.settings.trusted-public-keys = [
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+      "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
     ];
 
     nix.settings.trusted-users = [

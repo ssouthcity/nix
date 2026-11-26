@@ -7,6 +7,7 @@
       neptrHardware
       neptrDisks
 
+      ai
       base
       browser
       containers
